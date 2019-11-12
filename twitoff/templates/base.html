@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TwitOff - {{ title }}</title>
+        <!-- This is how you make a comment in html-->
+
+    </head>
+
+    <body>
+        <h1>TwitOff!</h1>
+        <p>Content for TwitOff goes here...</p>
+
+        <ul>
+            {% for user in users %}
+            <li>{{ user.name }}</li>
+            {% endfor %}
+        </ul>
+
+    </body>
+
+</html>
