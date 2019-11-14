@@ -3,8 +3,6 @@
 from decouple import config
 from dotenv import load_dotenv
 from flask import Flask, render_template, request
-import click
-from flask.cli import with_appcontext
 from .models import DB, Tweet, User
 from .twitter import add_or_update_user
 from .predict import predict_user
@@ -48,6 +46,7 @@ def create_app():
         return render_template('user.html', title=name, tweets=tweets,
                                message=message)
 
+
     #adding in a route for predictions
     @app.route('/compare', methods=['POST'])
     def compare(message=''):
@@ -62,21 +61,6 @@ def create_app():
                 user2 if prediction else user1
             )
         return render_template('prediction.html', title='Prediction',message=message)
-
-
-
-    # @app.route('/<name>')
-    # def user(name):
-    #     name = name
-    #     tweets = User.query.filter(User.name == name).first().tweets
-    #     return render_template('user.html', title=name, tweets=tweets)
- 
-    # @app.route('/add_user/<name>')
-    # def add_user(name):
-    #     name = name
-    #     add_user_and_tweets(name)
-    #     return render_template('add_user.html', title=name)
-
 
 
     @app.route('/reset')
